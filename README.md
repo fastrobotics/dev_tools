@@ -11,6 +11,17 @@
 
 # Setup
 ## 1.1 Option A: Use Submodules (preferred)
+Run the following:
+```bash
+cd <repo>
+git submodule add https://github.com/fastrobotics/dev_tools.git dev_tools
+```
+
+To update:
+```bash
+cd <repo>
+git submodule update --remote
+```
 
 ## 1.2 Option B: Clone this repo into your repo
 
