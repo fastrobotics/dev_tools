@@ -5,7 +5,8 @@ function print_usage()
 {
     echo "Usage Instructions"
     echo -e "<mode>:
-    code_coverage: Run Code Coverage Scan"
+    code_coverage: Run Code Coverage Scan
+    plantuml: Generate Plant UML images on all files in repo."
     exit 1
 }
 function check_setup {
@@ -15,6 +16,10 @@ function check_setup {
         echo "ERROR: NOT Running from the root of the repo!"
         return 1
     fi
+}
+# PlantUML Generation
+function plantuml {
+    find . -type f -name '*.puml' ! -path './templates/*' | xargs -I {} java -jar /usr/bin/plantuml.jar "{}"
 }
 # Code Coverage Scan
 function code_coverage_scan {
@@ -61,6 +66,7 @@ else
     
     case $1 in
         "code_coverage") code_coverage_scan;;
+        "plantuml") plantuml;;
     esac
 fi
 exit 0
