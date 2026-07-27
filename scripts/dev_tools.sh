@@ -43,7 +43,7 @@ function code_coverage_scan {
     else
         echo "$BUILD_TOOL Not supported!"
     fi
-    gcov_cmd="gcovr $bin_dir -x $coverage_dir/coverage.xml -s --html-details -o $coverage_dir/coverage.html  --filter '.*\.(hpp|cpp)$'   --exclude '.*/_deps/.*' --exclude '.*/test_.*' --exclude '.*/usr/include/.*' --exclude devel --fail-under-line $LINE_COVERAGE_THRESHOLD --fail-under-branch $BRANCH_COVERAGE_THRESHOLD --exclude-throw-branches --exclude-unreachable-branches"
+    gcov_cmd="gcovr $bin_dir -x $coverage_dir/coverage.xml -s --html-details -o $coverage_dir/coverage.html  --filter '.*\.(hpp|cpp)$'   --exclude '.*/_deps/.*' --exclude '.*/test_.*' --exclude '.*/usr/include/.*' --exclude devel --exclude '.*/third_party/*' --fail-under-line $LINE_COVERAGE_THRESHOLD --fail-under-branch $BRANCH_COVERAGE_THRESHOLD --exclude-throw-branches --exclude-unreachable-branches"
     eval "$gcov_cmd"
     status=$?
     xdg-open $coverage_dir/coverage.html
